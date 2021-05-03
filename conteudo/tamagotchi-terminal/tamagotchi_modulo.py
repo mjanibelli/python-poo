@@ -63,8 +63,6 @@ class Tamagotchi:
             pickle.dump(self, arquivo, pickle.HIGHEST_PROTOCOL)
 
 
-
-
 def carregar_tamagotchi():
     try:
         with open("Tamagotchi.pkl", "rb") as arquivo:

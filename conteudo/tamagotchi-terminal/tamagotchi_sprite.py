@@ -31,4 +31,3 @@ def mostrar_sprite(dias_vida):
         sprite = grande
 
     return sprite
-
