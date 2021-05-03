@@ -3,7 +3,6 @@ import time
 import datetime
 
 import tamagotchi_modulo
-import tamagotchi_tela
 
 while True:
     print("Menu Inicial\n[1] -> Jogar\n[0] -> Sair")
@@ -14,22 +13,18 @@ while True:
         if tamagotchi_modulo.carregar_tamagotchi():
             tamagotchi = tamagotchi_modulo.carregar_tamagotchi()
             tamagotchi.perder_status()
+
         else:
             nome = input("Digite o nome do seu Tamagotchi: ")
             tamagotchi = tamagotchi_modulo.Tamagotchi(nome)
+
             print(f"{tamagotchi.nome} nasceu!\n")
             time.sleep(1)
             os.system("cls")
 
-        while True:
-            if tamagotchi.fome == 0:
-                tamagotchi.vida -= 1
-
+        while True:  
             dias_vida = (datetime.date.today() - tamagotchi.nascimento).days
-            print(f"Vida: {tamagotchi.vida} Fome: {tamagotchi.fome} Felicidade: {tamagotchi.felicidade} Limpeza: {tamagotchi.limpeza}")
-            print(f"Dias de vida: {dias_vida}")
-            print(f"{tamagotchi_tela.mostrar_tamagotchi(dias_vida)}".center(20))
-            print("[1] -> Alimentar [2] -> Fazer carinho [3] -> Banho [0] -> Salvar e sair.\n")
+            tamagotchi.mostrar_tela(dias_vida)
             acao = input("O que fazer agora?: ")
 
             if acao == "0":

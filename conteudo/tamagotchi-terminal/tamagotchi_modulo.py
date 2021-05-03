@@ -2,13 +2,14 @@ import datetime
 import pickle
 import random
 
+import tamagotchi_sprite
+
 
 class Tamagotchi:
 
     def __init__(self, nome):
         self.nome = nome.title()
         self.nascimento = datetime.date.today()
-        self.vida = 10  # MAX = 10
         self.fome = 5  # MAX = 10
         self.felicidade = 5  # MAX = 10
         self.limpeza = 5 # MAX = 10
@@ -34,6 +35,13 @@ class Tamagotchi:
             self.felicidade = 10
 
         print(f"{self.nome} fica muito feliz com seu carinho!")
+
+    def mostrar_tela(self, dias_vida):
+        print(f"Fome: {self.fome} Felicidade: {self.felicidade} Limpeza: {self.limpeza}")
+        print(f"Dias de vida: {dias_vida}")
+        print(f"\t{tamagotchi_sprite.mostrar_sprite(dias_vida)}")
+        print("[1] -> Alimentar", "[2] -> Fazer carinho", sep=" ")
+        print("[3] -> Banho", "    [0] -> Salvar e sair\n", sep=" ")
     
     def perder_status(self):
         self.fome -= random.randint(1, 8)
