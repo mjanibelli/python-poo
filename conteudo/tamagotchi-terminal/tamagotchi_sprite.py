@@ -20,7 +20,7 @@ grande = """
 """
 
 
-def mostrar_sprite(dias_vida):
+def mostrar_sprite(dias_vida: int) -> str:
     if dias_vida < 5:
         sprite = pequeno
     

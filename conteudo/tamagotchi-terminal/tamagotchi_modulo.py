@@ -7,7 +7,7 @@ import tamagotchi_sprite
 
 class Tamagotchi:
 
-    def __init__(self, nome):
+    def __init__(self, nome: str) -> None:
         self.nome = nome.title()
         self.nascimento = datetime.date.today()
         self.fome = 5  # MAX = 10
@@ -36,7 +36,7 @@ class Tamagotchi:
 
         print(f"{self.nome} fica muito feliz com seu carinho!")
 
-    def mostrar_tela(self, dias_vida):
+    def mostrar_tela(self, dias_vida: int):
         print(f"Fome: {self.fome} Felicidade: {self.felicidade} Limpeza: {self.limpeza}")
         print(f"Dias de vida: {dias_vida}")
         print(f"\t{tamagotchi_sprite.mostrar_sprite(dias_vida)}")
@@ -58,12 +58,12 @@ class Tamagotchi:
 
         print(f"Enquanto você esteve fora, {self.nome} perdeu alguns status!")
 
-    def salvar_tamagotchi(self):
+    def salvar_tamagotchi(self) -> None:
         with open(self.arquivo, "wb") as arquivo:
             pickle.dump(self, arquivo, pickle.HIGHEST_PROTOCOL)
 
 
-def carregar_tamagotchi():
+def carregar_tamagotchi() -> Tamagotchi:
     try:
         with open("Tamagotchi.pkl", "rb") as arquivo:
             tamagotchi = pickle.load(arquivo)
