@@ -1,4 +1,3 @@
-from typing import DefaultDict
 import decorator
 
 
@@ -22,6 +21,7 @@ class ContaBancaria:
     def __str__(self):
         return f"Nome do cliente: {self.nome} | Saldo: R$ {self.saldo}"
 
+    @decorator.recibo
     @decorator.logger
     def depositar(self, quantia: float) -> str:
         if quantia > 0:
@@ -30,6 +30,7 @@ class ContaBancaria:
 
         return "Não foi possível realizar o depósito."
 
+    @decorator.recibo
     @decorator.logger
     def sacar(self, quantia: float) -> str:
         if self.saldo > quantia > 0:
@@ -38,6 +39,7 @@ class ContaBancaria:
 
         return "Não foi possível realizar o saque."
 
+    @decorator.recibo
     @decorator.logger
     def transferencia(self, destinatario, quantia: float) -> str:
         if isinstance(destinatario, self.__class__):
