@@ -3,7 +3,7 @@ import time
 
 class CalcExecucao:
 
-    def __init__(self, func: function) -> None:
+    def __init__(self, func) -> None:
         self.func = func
 
     def __call__(self, *args, **kwds) -> str:
