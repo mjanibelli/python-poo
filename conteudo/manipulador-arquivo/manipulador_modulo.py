@@ -30,10 +30,11 @@ class ArquivoTexto:
     def realocar_arquivo(self, caminho_novo: str) -> str:
         if os.path.isdir(caminho_novo):
             try:
-                shutil.move(self.arquivo_dir, caminho_novo)
+                novo_local = shutil.move(self.arquivo_dir, caminho_novo)
             except shutil.Error:
                 return "Esse caminho já existe. Tente colocar outro."
             else:
+                self.arquivo_dir = pathlib.Path(novo_local)
                 return f"Arquivo movido para {caminho_novo} com sucesso!"
         
         return "É preciso inserir um diretório válido."
@@ -42,6 +43,7 @@ class ArquivoTexto:
         nome_novo = nome_novo + self.arquivo_dir.suffix
         dir_novo = os.path.join(os.path.dirname(self.arquivo_dir), nome_novo)
         os.rename(self.arquivo_dir, dir_novo)
+        self.arquivo_dir = pathlib.Path(dir_novo)
 
         return f"{self.arquivo_dir} foi trocado para {dir_novo} com sucesso!"
 
