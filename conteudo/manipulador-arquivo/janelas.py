@@ -1,7 +1,7 @@
-from tkinter import Event
-from tkinter.constants import CENTER
 import PySimpleGUI as sg
 from PySimpleGUI.PySimpleGUI import POPOUT_WINDOW_FONT, Window
+from tkinter import Event
+from tkinter.constants import CENTER
 
 TITULO = "Manipulador de Arquivos"
 
@@ -17,7 +17,7 @@ def make_win1():
 
 def make_win2():
     layout2 = [
-        [sg.Text("Menu de Opções", size=(40, 2), justification=CENTER)], 
+        [sg.Text("Menu de Opções", s=(40, 2), justification=CENTER, font=("Courier New", 15, "bold"))], 
         [sg.Text("Escolha o que fazer com o arquivo: ")], 
         [sg.InputCombo(("Procurar palavra", "Realocar", "Renomear", "Zipar"), size=(20, 10), k="Escolha")], 
         [sg.Button("Inserir"), sg.Exit("Sair")]]
