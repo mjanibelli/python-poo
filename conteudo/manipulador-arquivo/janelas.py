@@ -10,7 +10,7 @@ def make_win1():
     layout1 = [
         [sg.Text("Escolha o arquivo que deseja manipular: ")], 
         [sg.Input(k="Input_Arq"), sg.FileBrowse("Pesquisar", k="Arquivo")], 
-        [sg.Button("Inserir", k="Inserir"), sg.Exit("Sair", k="Sair")]]
+        [sg.Button("Inserir", bind_return_key=True), sg.Exit("Sair")]]
 
     return sg.Window(TITULO, layout1)
 
@@ -29,7 +29,7 @@ def make_win_palavra():
     layout_esc_palavra = [
         [sg.Text("Digite a palavra ou frase que deseja procurar no arquivo: ")],
         [sg.Input(k="Palavra")], 
-        [sg.Button("Inserir"), sg.Cancel("Cancelar")]]
+        [sg.Button("Inserir", bind_return_key=True), sg.Cancel("Cancelar")]]
 
     return sg.Window(TITULO, layout_esc_palavra)
 
@@ -38,7 +38,7 @@ def make_win_realocar():
     layout_realocar = [
         [sg.Text("Insira o novo caminho para o arquivo: ")],
         [sg.Input(k="Caminho_novo")], 
-        [sg.Button("Inserir"), sg.Cancel("Cancelar")]]
+        [sg.Button("Inserir", bind_return_key=True), sg.Cancel("Cancelar")]]
     
     return sg.Window(TITULO, layout_realocar)
 
@@ -47,6 +47,6 @@ def make_win_renomear():
     layout_renomear = [
         [sg.Text("Digite o novo nome do arquivo: ")], 
         [sg.Input(k="Nome_novo")], 
-        [sg.Button("Inserir"), sg.Cancel("Cancelar")]]
+        [sg.Button("Inserir", bind_return_key=True), sg.Cancel("Cancelar")]]
 
     return sg.Window(TITULO, layout_renomear)
