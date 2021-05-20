@@ -6,7 +6,7 @@ from tkinter.constants import CENTER
 TITULO = "Manipulador de Arquivos"
 
 
-def make_win1():
+def make_win1() -> sg.Window:
     layout1 = [
         [sg.Text("Escolha o arquivo que deseja manipular: ")], 
         [sg.Input(k="Input_Arq"), sg.FileBrowse("Pesquisar", k="Arquivo")], 
@@ -15,7 +15,7 @@ def make_win1():
     return sg.Window(TITULO, layout1)
 
 
-def make_win2():
+def make_win2() -> sg.Window:
     layout2 = [
         [sg.Text("Menu de Opções", s=(40, 2), justification=CENTER, font=("Courier New", 15, "bold"))], 
         [sg.Text("Escolha o que fazer com o arquivo: ")], 
@@ -25,7 +25,7 @@ def make_win2():
     return sg.Window(TITULO, layout2)
 
 
-def make_win_palavra():
+def make_win_palavra() -> sg.Window:
     layout_esc_palavra = [
         [sg.Text("Digite a palavra ou frase que deseja procurar no arquivo: ")],
         [sg.Input(k="Palavra")], 
@@ -34,7 +34,7 @@ def make_win_palavra():
     return sg.Window(TITULO, layout_esc_palavra)
 
 
-def make_win_realocar():
+def make_win_realocar() -> sg.Window:
     layout_realocar = [
         [sg.Text("Insira o novo caminho para o arquivo: ")],
         [sg.Input(k="Caminho_novo")], 
@@ -43,7 +43,7 @@ def make_win_realocar():
     return sg.Window(TITULO, layout_realocar)
 
 
-def make_win_renomear():
+def make_win_renomear() -> sg.Window:
     layout_renomear = [
         [sg.Text("Digite o novo nome do arquivo: ")], 
         [sg.Input(k="Nome_novo")], 

@@ -10,10 +10,10 @@ class ArquivoTexto:
     def __init__(self, arquivo_dir: str) -> None:
         self.arquivo_dir = pathlib.Path(arquivo_dir)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f"{self.__class__.__name__}({self.arquivo_dir!r})"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Diretório do arquivo a ser manipulado: {self.arquivo_dir}"
 
     def procurar_palavra(self, palavra: str) -> str:
