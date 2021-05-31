@@ -1,8 +1,11 @@
 # Procurar palavra -> Encontrar todas as ocorrências e indicar onde ocorrem
+from io import FileIO
 import os
 import pathlib
 import shutil
 import zipfile
+
+from PyPDF2 import PdfFileReader, PdfFileWriter
 
 
 class ArquivoTexto:
@@ -15,6 +18,24 @@ class ArquivoTexto:
 
     def __str__(self) -> str:
         return f"Diretório do arquivo a ser manipulado: {self.arquivo_dir}"
+
+    def gerarsenha_pdf(self, senha: str) -> str:
+        if self.arquivo_dir.suffix == ".pdf":
+            escritor = PdfFileWriter()
+            pdf = PdfFileReader(FileIO(self.arquivo_dir.absolute(), "rb"))
+
+            for pagina in range(pdf.numPages):
+                escritor.addPage(pdf.getPage(pagina))
+            escritor.encrypt(senha)
+
+            with open(f"senha_{self.arquivo_dir.name}", "wb") as arquivo:
+                escritor.write(arquivo)
+
+            return f"'senha_{self.arquivo_dir.name}' foi criado com sucesso!" 
+        
+        else:
+            return "O arquivo precisa ser um PDF."
+
 
     def procurar_palavra(self, palavra: str) -> str:
         with open(self.arquivo_dir, encoding="utf8") as arquivo:

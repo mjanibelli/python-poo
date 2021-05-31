@@ -13,7 +13,7 @@ window1 = janelas.make_win1()
 event, values = window1.read()
 
 if event == "Inserir":
-    arquivo_dir = values["Arquivo"]
+    arquivo_dir = values["Input_Arq"]
 
     if os.path.isfile(arquivo_dir):
         arquivo_manip = manipulador_modulo.ArquivoTexto(arquivo_dir)
@@ -38,6 +38,18 @@ if event == "Inserir":
                     mensagem = arquivo_manip.procurar_palavra(palavra)
                     sg.popup(mensagem)
                     window_palavra.close()
+
+            elif values["Escolha"] == "Proteger PDF":
+                window_pdf_senha = janelas.make_win_senha_pdf()
+                event, values = window_pdf_senha.read()
+
+                if event in (None, "Cancelar"):
+                    window_pdf_senha.close()
+                else:
+                    senha_pdf = values["Senha_pdf"]
+                    mensagem = arquivo_manip.gerarsenha_pdf(senha_pdf)  # Usar threading para fazer uma loading screen.
+                    sg.popup(mensagem)
+                    window_pdf_senha.close()
 
             elif values["Escolha"] == "Realocar":
                 window_realocar = janelas.make_win_realocar()

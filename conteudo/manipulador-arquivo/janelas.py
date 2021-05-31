@@ -1,5 +1,5 @@
 import PySimpleGUI as sg
-from PySimpleGUI.PySimpleGUI import POPOUT_WINDOW_FONT, Window
+from PySimpleGUI.PySimpleGUI import POPOUT_WINDOW_FONT, TimerStart, Window
 from tkinter import Event
 from tkinter.constants import CENTER
 
@@ -16,10 +16,12 @@ def make_win1() -> sg.Window:
 
 
 def make_win2() -> sg.Window:
+    opcoes = ("Procurar palavra", "Realocar", "Renomear", "Zipar", "Proteger PDF")
+
     layout2 = [
         [sg.Text("Menu de Opções", s=(40, 2), justification=CENTER, font=("Courier New", 15, "bold"))], 
         [sg.Text("Escolha o que fazer com o arquivo: ")], 
-        [sg.InputCombo(("Procurar palavra", "Realocar", "Renomear", "Zipar"), size=(20, 10), k="Escolha")], 
+        [sg.InputCombo(opcoes, size=(20, 10), k="Escolha")], 
         [sg.Button("Inserir"), sg.Exit("Sair")]]
 
     return sg.Window(TITULO, layout2)
@@ -50,3 +52,12 @@ def make_win_renomear() -> sg.Window:
         [sg.Button("Inserir", bind_return_key=True), sg.Cancel("Cancelar")]]
 
     return sg.Window(TITULO, layout_renomear)
+
+
+def make_win_senha_pdf() -> sg.Window:
+    layout_senha_pdf = [
+        [sg.Text("Digite a senha que deseja inserir no PDF: ")],
+        [sg.Input(k="Senha_pdf")],
+        [sg.Button("Inserir", bind_return_key=True), sg.Cancel("Cancelar")]]
+
+    return sg.Window(TITULO, layout_senha_pdf)
