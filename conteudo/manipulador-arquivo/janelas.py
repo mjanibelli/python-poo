@@ -6,7 +6,7 @@ from tkinter.constants import CENTER
 TITULO = "Manipulador de Arquivos"
 
 
-def make_win1() -> sg.Window:
+def make_win_esc_arq() -> sg.Window:
     layout1 = [
         [sg.Text("Escolha o arquivo que deseja manipular: ")], 
         [sg.Input(k="Input_Arq"), sg.FileBrowse("Pesquisar", k="Arquivo")], 
@@ -15,16 +15,16 @@ def make_win1() -> sg.Window:
     return sg.Window(TITULO, layout1)
 
 
-def make_win2() -> sg.Window:
+def make_win_menu() -> sg.Window:
     opcoes = ("Procurar palavra", "Realocar", "Renomear", "Zipar", "Proteger PDF")
 
-    layout2 = [
+    layout_menu = [
         [sg.Text("Menu de Opções", s=(40, 2), justification=CENTER, font=("Courier New", 15, "bold"))], 
         [sg.Text("Escolha o que fazer com o arquivo: ")], 
         [sg.InputCombo(opcoes, size=(20, 10), k="Escolha")], 
         [sg.Button("Inserir"), sg.Exit("Sair")]]
 
-    return sg.Window(TITULO, layout2)
+    return sg.Window(TITULO, layout_menu)
 
 
 def make_win_palavra() -> sg.Window:
