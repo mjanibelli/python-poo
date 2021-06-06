@@ -33,7 +33,7 @@ class ContaBancaria:
     @decorator.recibo
     @decorator.logger
     def sacar(self, quantia: float) -> str:
-        if self.saldo > quantia > 0:
+        if self.saldo >= quantia > 0:
             self.saldo -= quantia
             return f"Foram sacados R$ {quantia} de sua conta!"
 
