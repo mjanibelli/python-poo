@@ -13,6 +13,7 @@ if event == "Inserir":
     cliente_1 = conta_modulo.ContaBancaria(values["Nome"], values["SaldoIni"])
     cliente_teste = conta_modulo.ContaBancaria("Teste", 100)
     win_menu = janelas.make_win_menu()
+    win_login.close()
 
     while True:
         event, values = win_menu.read()
@@ -21,6 +22,7 @@ if event == "Inserir":
             break
         
         elif event == "Sacar":
+            win_menu.Hide()
             win_sacar = janelas.make_win_sacar()
             event, values = win_sacar.read()
 
@@ -31,7 +33,10 @@ if event == "Inserir":
                 sg.popup(cliente_1.sacar(quantia))
                 win_sacar.close()
 
+            win_menu.UnHide()
+
         elif event == "Depositar":
+            win_menu.Hide()
             win_depositar = janelas.make_win_depositar()
             event, values = win_depositar.read()
 
@@ -42,7 +47,10 @@ if event == "Inserir":
                 sg.popup(cliente_1.depositar(quantia))
                 win_depositar.close()
 
+            win_menu.UnHide()
+
         elif event == "Transferência":
+            win_menu.Hide()
             win_transf = janelas.make_win_transf()
             event, values = win_transf.read()
 
@@ -53,7 +61,10 @@ if event == "Inserir":
                 sg.popup(cliente_1.transferencia(cliente_teste, quantia))
                 win_transf.close()
 
+            win_menu.UnHide()
+
         elif event == "Abrir conta conjunta":
+            win_menu.Hide()
             win_contaconj = janelas.make_win_contaconj()
             event, values = win_contaconj.read()
 
@@ -66,6 +77,8 @@ if event == "Inserir":
                 cliente_conjunto = cliente_1 + cliente_2
                 sg.popup(cliente_conjunto)
                 win_contaconj.close()
+            
+            win_menu.UnHide()
 
         elif event == "Minha conta":
             sg.popup(cliente_1)
