@@ -1,4 +1,3 @@
-# Procurar palavra -> Encontrar todas as ocorrências e indicar onde ocorrem
 from io import FileIO
 import os
 import pathlib
@@ -40,11 +39,17 @@ class ArquivoTexto:
     def procurar_palavra(self, palavra: str) -> str:
         with open(self.arquivo_dir, encoding="utf8") as arquivo:
             contador = 0
+            linhas = []
 
             for linha in arquivo:
                 contador += 1
+
                 if palavra in linha:
-                    return f"Encontrado: '{palavra}'. Linha: {contador}"
+                    linhas.append(contador)
+                    continue
+                
+            if linhas:
+                return f"'{palavra}' aparece nas seguintes linhas: {linhas}"
 
             return f"A palavra escolhida não aparece no arquivo inserido."
 
