@@ -27,7 +27,7 @@ if event == "Inserir":
             if event in (None, "Sair"):
                 break
             
-            elif values["Escolha"] == "Procurar palavra":
+            elif event == "Procurar palavra":
                 win_menu.Hide()
                 win_palavra = janelas.make_win_palavra()
                 event, values = win_palavra.read()
@@ -42,7 +42,7 @@ if event == "Inserir":
                 
                 win_menu.UnHide()
 
-            elif values["Escolha"] == "Proteger PDF":
+            elif event == "Proteger PDF":
                 win_menu.Hide()
                 win_pdf_senha = janelas.make_win_senha_pdf()
                 event, values = win_pdf_senha.read()
@@ -57,7 +57,7 @@ if event == "Inserir":
 
                 win_menu.UnHide()
 
-            elif values["Escolha"] == "Realocar":
+            elif event == "Realocar":
                 win_menu.Hide()
                 win_realocar = janelas.make_win_realocar()
                 event, values = win_realocar.read()
@@ -72,7 +72,7 @@ if event == "Inserir":
 
                 win_menu.UnHide()
 
-            elif values["Escolha"] == "Renomear":
+            elif event == "Renomear":
                 win_menu.Hide()
                 win_renomear = janelas.make_win_renomear()
                 event, values = win_renomear.read()
@@ -87,7 +87,7 @@ if event == "Inserir":
 
                 win_menu.UnHide()
 
-            elif values["Escolha"] == "Zipar":
+            elif event == "Zipar":
                 mensagem = arquivo_manip.zipar()
                 sg.popup(mensagem)
 

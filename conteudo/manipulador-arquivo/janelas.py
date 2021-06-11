@@ -16,13 +16,12 @@ def make_win_esc_arq() -> sg.Window:
 
 
 def make_win_menu() -> sg.Window:
-    opcoes = ("Procurar palavra", "Realocar", "Renomear", "Zipar", "Proteger PDF")
 
     layout_menu = [
-        [sg.Text("Menu de Opções", s=(40, 2), justification=CENTER, font=("Courier New", 15, "bold"))], 
-        [sg.Text("Escolha o que fazer com o arquivo: ")], 
-        [sg.InputCombo(opcoes, size=(20, 10), k="Escolha")], 
-        [sg.Button("Inserir"), sg.Exit("Sair")]]
+        [sg.Text("Menu de Opções", s=(26, 2), justification=CENTER, font=("Courier New", 15, "bold"))], 
+        [sg.Text("Escolha o que fazer com o arquivo: ")],
+        [sg.Button("Procurar palavra", s=(12, 2)), sg.Button("Realocar", s=(12, 2)), sg.Button("Renomear", s=(12, 2))],
+        [sg.Button("Zipar", s=(12, 2)), sg.Button("Proteger PDF", s=(12, 2)), sg.Exit("Sair", s=(12, 2))]]
 
     return sg.Window(TITULO, layout_menu)
 
